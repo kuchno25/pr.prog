@@ -159,7 +159,7 @@ def menu():
     print("2 - wejdz do sklepu")
     print("3 - uzyj przedmiotu")
     print("4 - sprawdz czy posiadasz taki przedmiot")
-    print("5 - koncz to cos")
+    print("5 - koncz")
 
     wybor = int(input("wybierz opcje: "))
 
