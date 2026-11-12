@@ -1,0 +1,193 @@
+ekwipunek = {"miecz": 1, "mikstura": 3, "zloto": 50}
+
+def sklep():
+   while True:
+    print("---------SKLEP---------")
+    print("1 - kup miecz - 30zlota")
+    print("2 - kup miksture - 10 zlota")
+    print("3 - pokaz EQ")
+    print("4 - wyjdz do menu")
+
+    wybor = int(input("daj wybor: "))
+
+    if wybor == 1:
+      if ekwipunek["zloto"] < 30:
+        print()
+        print("nie masz zlota na miecz")
+        print()
+      else:
+        ekwipunek.update({"zloto": ekwipunek["zloto"] - 30})
+        ekwipunek.update({"miecz": ekwipunek["miecz"] + 1})
+        print()
+        print("zakupiłes miecz")
+        print()
+      
+      
+    elif wybor == 2:
+      if ekwipunek["zloto"] < 10:
+        print()
+        print("nie masz zlota na miksture")
+        print()
+      else:
+        ekwipunek.update({"mikstura": ekwipunek["mikstura"] + 1})
+        ekwipunek.update({"zloto": ekwipunek["zloto"] - 10})
+        print()
+        print("zakupiles miksture")
+        print()
+      
+      
+    elif wybor == 3:
+      print()
+      print("to twoje EQ")
+      print(ekwipunek)
+      print()
+      
+      
+    elif wybor == 4:
+      print()
+      print("wychodzisz do menu")
+      print()
+      break
+      
+      
+    else:
+      print()
+      print("zle wybrales, wybierz od 1 do 4")
+
+def uzyj_przedmiot():
+
+  while True:
+    import random
+    print("---------UZYWANIE PRZEDMIOTU---------")
+    print()
+    print("DOSTĘPNE PRZEDMIOTY:")
+    print(ekwipunek)
+    print()
+    print("wcisnij 1 by użyć miecz")
+    print("wcisnij 2 by uzyc mikstury")
+    print("wcisnij 3 by losowac zlotem (50 złota)")
+    print("wcisnij 4 by wyjść")
+
+    przedmiot = int(input("wybierz numer:  "))
+    
+    if przedmiot == 1:
+      if ekwipunek["miecz"] <= 0:
+        print()
+        print("BRAK MIECZOW")
+      else:
+        ekwipunek.update({"miecz": ekwipunek["miecz"] - 1})
+        print("użyłeś miecza (-1)")
+    elif przedmiot == 2:
+      if ekwipunek["mikstura"] <= 0:
+        print()
+        print("BRAK POTEK")
+      else:
+        ekwipunek.update({"mikstura": ekwipunek["mikstura"] - 1})
+        print("użyłeś potki (-1)")
+    elif przedmiot == 3:
+        if ekwipunek["zloto"] < 50:
+          print("za malo zlota")
+        elif ekwipunek["zloto"] >= 50:
+          print("losujesz zlotem")
+          losowanie = random.randrange(1, 300)
+          print(f"wygrales: {losowanie} ZLOTA!")
+          ekwipunek.update({"zloto": ekwipunek["zloto"] - 50})
+          ekwipunek.update({"zloto": ekwipunek["zloto"] + losowanie})
+        else:
+          print("blad 1")
+    elif przedmiot == 4:
+      print()
+      print("idziesz do menu")
+      print()
+      break
+    else:
+      print("zly wybor, wybierz od 1 - 4")
+    
+def sprawdzenie():
+  while True:
+      print("---------UZYWANIE PRZEDMIOTU---------")
+      print("wciśnij 1 by sprawdzić czy masz miecz")
+      print("wciśnij 2 by sprawdzić czy masz potke")
+      print("wciśnij 3 by sprawdzić czy masz zloto")
+      print("wcisnij 4 by wyjsc do menu")
+      sprawdz = int(input("wybierz numer: "))
+      if sprawdz == 1:
+        if ekwipunek["miecz"] >= 1:
+          print()
+          print(f"masz {ekwipunek["miecz"]} mieczy")
+          print()
+        else:
+          print()
+          print("nie masz miecza")
+          print()
+      elif sprawdz == 2:
+        if ekwipunek["mikstura"] >= 1:
+          print()
+          print(f"masz {ekwipunek["mikstura"]} potek")
+          print()
+        else:
+          print()
+          print("nie masz potek")
+          print()
+      elif sprawdz == 3:
+        if ekwipunek["zloto"] >= 1:
+          print()
+          print(f"masz {ekwipunek["zloto"]} zlota")
+          print()
+        else:
+          print()
+          print("nie masz zlota")   
+          print()
+      elif sprawdz == 4:
+        print()
+        print("wychodzisz do menu")
+        print()
+        break
+      else: 
+        print()
+        print("zly wybor")
+        print()
+
+    
+    
+        
+      
+def menu():
+  while True:
+    print("---------MENU---------")
+    print("1 - wyswietl nazwy i ilości")
+    print("2 - wejdz do sklepu")
+    print("3 - uzyj przedmiotu")
+    print("4 - sprawdz czy posiadasz taki przedmiot")
+    print("5 - koncz to cos")
+
+    wybor = int(input("wybierz opcje: "))
+
+    if wybor == 1:
+      
+      print()
+      print("twoje EQ:")
+      print(ekwipunek)      
+      print()
+    
+    elif wybor == 2:
+      sklep()
+
+    elif wybor == 3:
+      uzyj_przedmiot()
+
+    elif wybor == 4:
+      sprawdzenie()
+    
+    elif wybor == 5:
+      print()
+      print()
+      print("żegnaj...")
+      break
+      
+    else:
+      print()
+      print("zly wybor")
+      
+
+menu()       
